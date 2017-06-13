@@ -21,4 +21,38 @@ describe "#top_up" do
   end
 end
 
+describe "#deduct" do
+  it "will deduct from 0 tp minus1" do
+    oystercard.deduct(1)
+    expect(oystercard.balance).to eq -1
+  end
+end
+
+describe "#touch_in" do
+  it "marks in_use as true" do
+    oystercard.touch_in
+    expect(oystercard.in_use).to eq true
+  end
+end
+
+describe "#touch_out" do
+  it "marks in_use as false" do
+    oystercard.touch_out
+    expect(oystercard.in_use).to eq false
+  end
+end
+
+describe "#in_journey?" do
+  it "marks a card as being in a journey after touch_in" do
+    oystercard.touch_in
+    expect(oystercard).to be_in_journey
+  end
+
+  it "marks a card as not being in a journey after touch_out" do
+    oystercard.touch_out
+    expect(oystercard).not_to be_in_journey
+  end
+end
+
+
 end
