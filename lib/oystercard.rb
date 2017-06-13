@@ -20,6 +20,7 @@ MAX_BALANCE = 90
   end
 
   def touch_in
+    raise "Top up!" if @balance< 1
     @in_use = true
   end
 
